@@ -997,3 +997,47 @@ h1{
     width: 100%;
   }
 }
+
+/* Hide nav-links by default on small screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 220px;
+    height: 100vh;
+    background-color: #fff;
+    padding-top: 80px;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    left: 0;
+  }
+
+  .nav-links li {
+    margin: 16px 0;
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .navbar img#header-logo {
+    margin-left: 20px;
+  }
+}
