@@ -1041,3 +1041,141 @@ h1{
     margin-left: 20px;
   }
 }
+
+/* Base styles (desktop) */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+#header-logo {
+  max-height: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: auto;
+  gap: 20px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a,
+.nav-links span {
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Dropdown styles for desktop */
+.dropdown,
+.dropdown-sub {
+  display: none;
+  position: absolute;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 10px 0;
+  min-width: 180px;
+  top: 100%;
+  left: 0;
+  z-index: 2000;
+}
+
+.dropdown-sub {
+  left: 100%;
+  top: 0;
+}
+
+.dropdown-parent:hover > .dropdown,
+.dropdown-sub-parent:hover > .dropdown-sub {
+  display: block;
+}
+
+/* Hamburger button hidden on desktop */
+#menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+  }
+  
+  #menu-toggle {
+    display: block;
+    margin-left: 10px;
+  }
+  
+  /* Hide logo on sidebar open optionally or keep it */
+  #header-logo {
+    max-height: 40px;
+  }
+  
+  .nav-links {
+    /* Make nav vertical, hidden by default */
+    position: fixed;
+    top: 0;
+    left: -250px; /* hide offscreen */
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    padding-top: 60px;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    z-index: 1500;
+  }
+  
+  .nav-links.open {
+    left: 0; /* show sidebar */
+  }
+  
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .nav-links a, .nav-links span {
+    display: block;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #222;
+  }
+  
+  /* Submenus vertical below parent */
+  .dropdown,
+  .dropdown-sub {
+    position: static;
+    box-shadow: none;
+    padding-left: 20px;
+    display: none;
+    background: #f9f9f9;
+  }
+  
+  /* Show submenu if parent is active/open */
+  .dropdown-parent.active > .dropdown,
+  .dropdown-sub-parent.active > .dropdown-sub {
+    display: block;
+  }
+  
+  /* Add caret or indicator */
+  .dropdown-parent > a::after,
+  .dropdown-sub-parent > span::after {
+    content: ' ▼';
+    float: right;
+    font-size: 12px;
+  }
+}

@@ -25,3 +25,24 @@ function changepage3(){
  window.location.href = "contact.html";
 }
 
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+// Toggle sidebar open/close
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Handle submenu toggle on click for mobile
+const dropdownParents = document.querySelectorAll('.dropdown-parent > a, .dropdown-sub-parent > span');
+
+dropdownParents.forEach(parent => {
+  parent.addEventListener('click', e => {
+    // Prevent default only on small screens
+    if(window.innerWidth <= 768) {
+      e.preventDefault();
+      const li = parent.parentElement;
+      li.classList.toggle('active');
+    }
+  });
+});
